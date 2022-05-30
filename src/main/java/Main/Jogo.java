@@ -1,27 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Main;
 
 import java.awt.Color;
 
-/**
- *
- * @author raf
- */
 public class Jogo extends javax.swing.JFrame {
     
     public static boolean boolJogando = false;
-    public static int dificuldade;
+    public static int dificuldade, qntRepetir, qntDica;
     
     /**
      * Creates new form Jogo
      */
     public Jogo() {
         initComponents();
-        jB_Repetir.setEnabled(false);
+        jB_Reiniciar.setEnabled(false);
         jB_Jogar.setEnabled(false);
+        jB_Repetir.setEnabled(false);
+        jB_Dica.setEnabled(false);
     }
 
     /**
@@ -48,14 +42,14 @@ public class Jogo extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jB_Azul = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jB_Repetir = new javax.swing.JButton();
+        jB_Dica = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jB_Normal = new javax.swing.JButton();
         jB_Facil = new javax.swing.JButton();
         jB_Dificil = new javax.swing.JButton();
         jB_Jogar = new javax.swing.JButton();
-        jB_Repetir = new javax.swing.JButton();
+        jB_Reiniciar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Genius");
@@ -189,11 +183,11 @@ public class Jogo extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 255));
-        jButton1.setText("Repetir");
+        jB_Repetir.setBackground(new java.awt.Color(204, 204, 255));
+        jB_Repetir.setText("Repetir");
 
-        jButton2.setBackground(new java.awt.Color(204, 204, 255));
-        jButton2.setText("Dica");
+        jB_Dica.setBackground(new java.awt.Color(204, 204, 255));
+        jB_Dica.setText("Dica");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -201,9 +195,9 @@ public class Jogo extends javax.swing.JFrame {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(jB_Repetir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jB_Dica, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
@@ -211,8 +205,8 @@ public class Jogo extends javax.swing.JFrame {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jB_Repetir, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(jB_Dica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -287,9 +281,14 @@ public class Jogo extends javax.swing.JFrame {
             }
         });
 
-        jB_Repetir.setBackground(new java.awt.Color(204, 204, 255));
-        jB_Repetir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jB_Repetir.setText("Reiniciar");
+        jB_Reiniciar.setBackground(new java.awt.Color(204, 204, 255));
+        jB_Reiniciar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jB_Reiniciar.setText("Reiniciar");
+        jB_Reiniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_ReiniciarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -299,7 +298,7 @@ public class Jogo extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jB_Jogar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jB_Repetir)
+                .addComponent(jB_Reiniciar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jB_Facil)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -317,7 +316,7 @@ public class Jogo extends javax.swing.JFrame {
                     .addComponent(jB_Facil, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                     .addComponent(jB_Dificil, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                     .addComponent(jB_Jogar)
-                    .addComponent(jB_Repetir))
+                    .addComponent(jB_Reiniciar))
                 .addContainerGap())
         );
 
@@ -361,27 +360,59 @@ public class Jogo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jB_FacilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_FacilActionPerformed
-        jB_Facil.setBackground(Color.white);
-        jB_Normal.setBackground(new java.awt.Color(204, 204, 255));
-        jB_Dificil.setBackground(new java.awt.Color(204, 204, 255));
+        dificuldade = 0;
+        highlightBotao(dificuldade);
     }//GEN-LAST:event_jB_FacilActionPerformed
 
     private void jB_NormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_NormalActionPerformed
-        jB_Facil.setBackground(new java.awt.Color(204, 204, 255));
-        jB_Normal.setBackground(Color.white);
-        jB_Dificil.setBackground(new java.awt.Color(204, 204, 255));
+        dificuldade = 1;
+        highlightBotao(dificuldade);
     }//GEN-LAST:event_jB_NormalActionPerformed
 
     private void jB_DificilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_DificilActionPerformed
-        jB_Facil.setBackground(new java.awt.Color(204, 204, 255));
-        jB_Normal.setBackground(new java.awt.Color(204, 204, 255));
-        jB_Dificil.setBackground(Color.white);
+        dificuldade = 2;
+        highlightBotao(dificuldade);
     }//GEN-LAST:event_jB_DificilActionPerformed
 
     private void jB_JogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_JogarActionPerformed
         boolJogando = true;
+        jB_Jogar.setEnabled(false);
+        jB_Reiniciar.setEnabled(true);
         liberaDificuldades();
+        liberaAjudas();
     }//GEN-LAST:event_jB_JogarActionPerformed
+
+    private void jB_ReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_ReiniciarActionPerformed
+        jogarReiniciar();
+        liberaDificuldades();
+    }//GEN-LAST:event_jB_ReiniciarActionPerformed
+    
+    private void jogarReiniciar() {
+        liberaDificuldades();
+        if (boolJogando) {
+            boolJogando = false;
+            jB_Jogar.setEnabled(true);
+            jB_Reiniciar.setEnabled(false);
+        }
+    }
+    
+    private void highlightBotao(int dificuldade) {
+        jB_Jogar.setEnabled(true);
+        jB_Facil.setBackground(new java.awt.Color(204, 204, 255));
+        jB_Normal.setBackground(new java.awt.Color(204, 204, 255));
+        jB_Dificil.setBackground(new java.awt.Color(204, 204, 255));
+        switch (dificuldade) {
+            case 0:
+                jB_Facil.setBackground(Color.white);
+                break;
+            case 1:
+                jB_Normal.setBackground(Color.white);
+                break;
+            case 2:
+                jB_Dificil.setBackground(Color.white);
+                break;
+        }
+    }
     
     private void liberaDificuldades() {
         if (boolJogando == false) {
@@ -395,9 +426,26 @@ public class Jogo extends javax.swing.JFrame {
         }
     }
     
-    private void podeUsarRepetir() {
-        if (rootPaneCheckingEnabled) {
-            
+    private void liberaAjudas() {
+        switch (dificuldade) {
+            case 0:
+                qntRepetir = 2;
+                qntDica = 3;
+                jB_Repetir.setEnabled(true);
+                jB_Dica.setEnabled(true);
+                break;
+            case 1:
+                qntRepetir = 1;
+                qntDica = 2;
+                jB_Repetir.setEnabled(true);
+                jB_Dica.setEnabled(true);
+                break;
+            case 2:
+                qntRepetir = 0;
+                qntDica = 0;
+                jB_Repetir.setEnabled(false);
+                jB_Dica.setEnabled(false);
+                break;
         }
     }
     
@@ -439,6 +487,7 @@ public class Jogo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jB_Amarelo;
     private javax.swing.JButton jB_Azul;
+    private javax.swing.JButton jB_Dica;
     private javax.swing.JButton jB_Dificil;
     private javax.swing.JButton jB_Dificil1;
     private javax.swing.JButton jB_Dificil2;
@@ -451,13 +500,12 @@ public class Jogo extends javax.swing.JFrame {
     private javax.swing.JButton jB_Normal;
     private javax.swing.JButton jB_Normal1;
     private javax.swing.JButton jB_Normal2;
+    private javax.swing.JButton jB_Reiniciar;
     private javax.swing.JButton jB_Repetir;
     private javax.swing.JButton jB_Repetir1;
     private javax.swing.JButton jB_Repetir2;
     private javax.swing.JButton jB_Verde;
     private javax.swing.JButton jB_Vermelho;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

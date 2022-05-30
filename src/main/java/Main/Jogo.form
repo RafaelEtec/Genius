@@ -336,9 +336,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jB_Repetir" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton2" min="-2" pref="75" max="-2" attributes="0"/>
+                          <Component id="jB_Dica" min="-2" pref="75" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -348,8 +348,8 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jButton1" pref="28" max="32767" attributes="0"/>
-                              <Component id="jButton2" max="32767" attributes="0"/>
+                              <Component id="jB_Repetir" pref="28" max="32767" attributes="0"/>
+                              <Component id="jB_Dica" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -357,7 +357,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="jButton1">
+                <Component class="javax.swing.JButton" name="jB_Repetir">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="cc" red="cc" type="rgb"/>
@@ -365,7 +365,7 @@
                     <Property name="text" type="java.lang.String" value="Repetir"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton2">
+                <Component class="javax.swing.JButton" name="jB_Dica">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="cc" red="cc" type="rgb"/>
@@ -391,7 +391,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jB_Jogar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jB_Repetir" min="-2" max="-2" attributes="0"/>
+                      <Component id="jB_Reiniciar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jB_Facil" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -411,7 +411,7 @@
                           <Component id="jB_Facil" alignment="3" pref="28" max="32767" attributes="0"/>
                           <Component id="jB_Dificil" alignment="3" pref="28" max="32767" attributes="0"/>
                           <Component id="jB_Jogar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jB_Repetir" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jB_Reiniciar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -475,7 +475,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jB_JogarActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jB_Repetir">
+            <Component class="javax.swing.JButton" name="jB_Reiniciar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
@@ -485,6 +485,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Reiniciar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jB_ReiniciarActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
