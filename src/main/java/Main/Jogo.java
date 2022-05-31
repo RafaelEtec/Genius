@@ -12,10 +12,13 @@ public class Jogo extends javax.swing.JFrame {
      */
     public Jogo() {
         initComponents();
+        liberaCores();
         jB_Reiniciar.setEnabled(false);
         jB_Jogar.setEnabled(false);
         jB_Repetir.setEnabled(false);
         jB_Dica.setEnabled(false);
+        jL_qntRepetir.setText("?");
+        jL_qntDica.setText("?");
     }
 
     /**
@@ -44,6 +47,8 @@ public class Jogo extends javax.swing.JFrame {
         jPanel11 = new javax.swing.JPanel();
         jB_Repetir = new javax.swing.JButton();
         jB_Dica = new javax.swing.JButton();
+        jL_qntRepetir = new javax.swing.JLabel();
+        jL_qntDica = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jB_Normal = new javax.swing.JButton();
         jB_Facil = new javax.swing.JButton();
@@ -185,9 +190,18 @@ public class Jogo extends javax.swing.JFrame {
 
         jB_Repetir.setBackground(new java.awt.Color(204, 204, 255));
         jB_Repetir.setText("Repetir");
+        jB_Repetir.setToolTipText("");
 
         jB_Dica.setBackground(new java.awt.Color(204, 204, 255));
         jB_Dica.setText("Dica");
+
+        jL_qntRepetir.setFont(new java.awt.Font("Perpetua", 1, 12)); // NOI18N
+        jL_qntRepetir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jL_qntRepetir.setText("Repetir");
+
+        jL_qntDica.setFont(new java.awt.Font("Perpetua", 1, 12)); // NOI18N
+        jL_qntDica.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jL_qntDica.setText("Dicas");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -195,19 +209,27 @@ public class Jogo extends javax.swing.JFrame {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jB_Repetir)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jL_qntRepetir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jB_Repetir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jB_Dica, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jB_Dica, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                    .addComponent(jL_qntDica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jB_Repetir, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jB_Repetir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jB_Dica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jL_qntRepetir)
+                    .addComponent(jL_qntDica))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -314,7 +336,7 @@ public class Jogo extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jB_Normal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jB_Facil, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addComponent(jB_Dificil, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(jB_Dificil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jB_Jogar)
                     .addComponent(jB_Reiniciar))
                 .addContainerGap())
@@ -352,7 +374,7 @@ public class Jogo extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -380,20 +402,28 @@ public class Jogo extends javax.swing.JFrame {
         jB_Reiniciar.setEnabled(true);
         liberaDificuldades();
         liberaAjudas();
+        liberaCores();
+        jogar();
     }//GEN-LAST:event_jB_JogarActionPerformed
 
     private void jB_ReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_ReiniciarActionPerformed
         jogarReiniciar();
         liberaDificuldades();
+        liberaCores();
     }//GEN-LAST:event_jB_ReiniciarActionPerformed
     
+    public void jogar() {
+        
+    }
+    
     private void jogarReiniciar() {
-        liberaDificuldades();
         if (boolJogando) {
             boolJogando = false;
             jB_Jogar.setEnabled(true);
             jB_Reiniciar.setEnabled(false);
         }
+        liberaDificuldades();
+        liberaAjudas();
     }
     
     private void highlightBotao(int dificuldade) {
@@ -426,26 +456,49 @@ public class Jogo extends javax.swing.JFrame {
         }
     }
     
+    public void liberaCores() {
+        if (boolJogando == true) {
+            jB_Verde.setEnabled(true);
+            jB_Vermelho.setEnabled(true);
+            jB_Amarelo.setEnabled(true);
+            jB_Azul.setEnabled(true);
+        } else {
+            jB_Verde.setEnabled(false);
+            jB_Vermelho.setEnabled(false);
+            jB_Amarelo.setEnabled(false);
+            jB_Azul.setEnabled(false);
+        }
+    }
+    
     private void liberaAjudas() {
-        switch (dificuldade) {
-            case 0:
-                qntRepetir = 2;
-                qntDica = 3;
-                jB_Repetir.setEnabled(true);
-                jB_Dica.setEnabled(true);
-                break;
-            case 1:
-                qntRepetir = 1;
-                qntDica = 2;
-                jB_Repetir.setEnabled(true);
-                jB_Dica.setEnabled(true);
-                break;
-            case 2:
-                qntRepetir = 0;
-                qntDica = 0;
-                jB_Repetir.setEnabled(false);
-                jB_Dica.setEnabled(false);
-                break;
+        if (boolJogando == true) {
+            switch (dificuldade) {
+                case 0:
+                    qntRepetir = 2;
+                    qntDica = 3;
+                    jB_Repetir.setEnabled(true);
+                    jB_Dica.setEnabled(true);
+                    break;
+                case 1:
+                    qntRepetir = 1;
+                    qntDica = 2;
+                    jB_Repetir.setEnabled(true);
+                    jB_Dica.setEnabled(true);
+                    break;
+                case 2:
+                    qntRepetir = 0;
+                    qntDica = 0;
+                    jB_Repetir.setEnabled(false);
+                    jB_Dica.setEnabled(false);
+                    break;
+            }
+            jL_qntRepetir.setText(Integer.toString(qntRepetir));
+            jL_qntDica.setText(Integer.toString(qntDica));
+        } else {
+            jB_Repetir.setEnabled(false);
+            jB_Dica.setEnabled(false);
+            jL_qntRepetir.setText("?");
+            jL_qntDica.setText("?");
         }
     }
     
@@ -489,28 +542,19 @@ public class Jogo extends javax.swing.JFrame {
     private javax.swing.JButton jB_Azul;
     private javax.swing.JButton jB_Dica;
     private javax.swing.JButton jB_Dificil;
-    private javax.swing.JButton jB_Dificil1;
-    private javax.swing.JButton jB_Dificil2;
     private javax.swing.JButton jB_Facil;
-    private javax.swing.JButton jB_Facil1;
-    private javax.swing.JButton jB_Facil2;
     private javax.swing.JButton jB_Jogar;
-    private javax.swing.JButton jB_Jogar1;
-    private javax.swing.JButton jB_Jogar2;
     private javax.swing.JButton jB_Normal;
-    private javax.swing.JButton jB_Normal1;
-    private javax.swing.JButton jB_Normal2;
     private javax.swing.JButton jB_Reiniciar;
     private javax.swing.JButton jB_Repetir;
-    private javax.swing.JButton jB_Repetir1;
-    private javax.swing.JButton jB_Repetir2;
     private javax.swing.JButton jB_Verde;
     private javax.swing.JButton jB_Vermelho;
+    private javax.swing.JLabel jL_qntDica;
+    private javax.swing.JLabel jL_qntRepetir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -519,6 +563,5 @@ public class Jogo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     // End of variables declaration//GEN-END:variables
 }
